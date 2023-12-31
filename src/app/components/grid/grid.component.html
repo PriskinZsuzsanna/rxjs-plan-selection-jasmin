@@ -1,0 +1,9 @@
+<section class="grid">
+    <div class="container">
+        <div class="grid">
+            <ng-container  *ngIf="data$ | async as data">
+                <app-card (set)="set($event)" *ngFor="let item of data" [item]="item" [plan$]="plan$"></app-card>
+            </ng-container>
+        </div>
+    </div>
+</section>

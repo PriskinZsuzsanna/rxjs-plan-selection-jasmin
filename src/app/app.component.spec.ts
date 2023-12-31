@@ -1,27 +1,65 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { DataService } from './services/data.service';
+import { of } from 'rxjs';
+import { HeaderComponent } from './components/header/header.component';
+import { GridComponent } from './components/grid/grid.component';
+import { CardComponent } from './components/card/card.component';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent]
-  }));
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent, HeaderComponent, GridComponent, CardComponent],
+      providers: [
+        { provide: DataService, useClass: MockDataService },
+      ],
+    });
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
   });
 
-  it(`should have as title 'pricing-component-rxjs'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('pricing-component-rxjs');
+  it('should create the app component', () => {
+    expect(component).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should set the plan', () => {
+    const plan = 'basic';
+    spyOn(component.planSubject, 'next');
+
+    component.setPlan(plan);
+
+    expect(component.planSubject.next).toHaveBeenCalledWith(plan);
+  });
+
+  it('should change the state', () => {
+    const initial = component.stateSubject.value;
+    component.changeState();
+
+    expect(component.stateSubject.value).toEqual(!initial);
+  });
+
+  it('should modify data based on state', (done) => {
+    // Set the state to true
+    component.stateSubject.next(true);
+
+    // Trigger change detection
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('pricing-component-rxjs app is running!');
+
+    // Check if the data is modified as expected
+    component.data$.subscribe(modifiedData => {
+      expect(modifiedData).toEqual([
+        { name: 'Item 1', price: 10 },
+        { name: 'Item 2', price: 20 }
+      ]);
+      done();
+    });
   });
 });
+
+class MockDataService {
+  data$ = of([{ name: 'Item 1', price: 100 }, { name: 'Item 2', price: 200 }]);
+}

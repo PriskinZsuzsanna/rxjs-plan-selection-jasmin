@@ -1,0 +1,36 @@
+h1 {
+    color: var(--dark-grayish-blue);
+}
+
+.toggle {
+    padding-block: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+}
+
+.toggle-text {
+    color: var(--light-grayish-blue);
+    font-weight: 400;
+    padding-inline: .6rem;
+}
+
+.toggle-btn {
+    width: 40px;
+    height: 20px;
+    background: linear-gradient(90deg, var(--linear-gradient));
+    border-radius: 2rem;
+}
+
+.toggle-ball {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    scale: .8;
+}
+
+.toggle-ball.toggled {
+    translate: 100%
+}

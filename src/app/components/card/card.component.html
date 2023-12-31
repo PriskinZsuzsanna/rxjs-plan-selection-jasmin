@@ -1,0 +1,8 @@
+<div (click)="setPlan(item['deal'])" class="card" [ngClass]="item['deal'] === (plan$ | async) ? 'active' : 'none'">
+    <p class="plan">{{item['deal']}}</p>
+    <p class="price">$ <span>{{item['price'] < 100 ? ((item['price'] | number : '1.2-3') | slice : 0 : -1)  : (item['price'] | number : '1.2-3')}} </span></p>
+    <p class="box box-1">{{item['storage']}} Storage</p>
+    <p class="box box-2">{{item['users']}} Users Allowed</p>
+    <p class="box box-3">Send up to {{item['send']}}</p>
+    <button>learn more</button>
+</div>

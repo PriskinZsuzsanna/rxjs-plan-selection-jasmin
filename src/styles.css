@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+:root {
+  --linear-gradient: hsl(236, 72%, 79%), hsl(237, 63%, 64%);
+  --very-light-grayish-blue: hsl(240, 78%, 98%);
+  --light-grayish-blue: hsl(234, 14%, 74%);
+  --grayish-blue: hsl(233, 13%, 49%);
+  --dark-grayish-blue: hsl(232, 13%, 33%);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: url(assets/images/bg-top.svg) no-repeat center/cover, hsla(236, 72%, 79%, 0.192);
+}
+
+main {
+    width: 100%;
+    min-height: 100vh;
+    padding-block: 1rem;
+}
+
+section {
+    padding-block: 2rem;
+    text-align: center;
+}
+
+.container {
+    width: min(90%, 1200px);
+    margin-inline: auto;
+}

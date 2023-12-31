@@ -1,0 +1,53 @@
+.card {
+    padding: 1rem 1.2rem;
+    background: #fff;
+    color: var(--dark-grayish-blue);
+    font-weight: 700;
+    border-radius: .4rem;          
+}
+
+.card.active {
+    background: linear-gradient(150deg, var(--linear-gradient));
+    color: #fff;
+}
+
+.plan {
+    text-transform: capitalize;
+    margin-top: .5rem;
+}
+
+.price {
+    border-bottom: 1px solid var(--light-grayish-blue);
+    padding-block: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    font-size: 1.5rem;
+}
+
+.price span {
+    font-size: 3rem;
+}
+
+.box {
+    border-bottom: 1px solid var(--light-grayish-blue);
+    padding-block: 1rem;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: .6rem;
+    width: 100%;
+    background: linear-gradient(90deg, var(--linear-gradient));
+    color: #fff;
+    margin-block: 1.4rem 1rem;
+    border-radius: .4rem;
+    text-transform: uppercase;
+}
+
+.card.active button {
+    background: #fff;
+    color: hsl(237, 63%, 64%);
+}

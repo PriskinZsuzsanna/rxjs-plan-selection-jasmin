@@ -1,0 +1,12 @@
+<section class="header">
+    <div class="container">
+        <h1>Our Pricing</h1>
+        <div class="toggle">
+            <p class="toggle-text">Annualy</p>
+            <div (click)="toggleState()" class="toggle-btn" >
+                <div class="toggle-ball" [ngClass]="(state | async) ? 'toggled': 'none'"></div>
+            </div>
+            <p class="toggle-text">Monthly</p>
+        </div>
+    </div>
+</section>
